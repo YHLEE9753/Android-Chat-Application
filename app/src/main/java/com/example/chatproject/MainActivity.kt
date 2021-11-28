@@ -45,12 +45,10 @@ class MainActivity : AppCompatActivity() {
                     // get one user
                     val currentUser = postSnapshot.getValue(User::class.java)
                     // add user to list
-                    if (currentUser != null) {
-                        Log.d("ITM", currentUser.email.toString())
-                    } else {
-                        Log.d("ITM", "no value")
+                    if(mAuth.currentUser?.uid != currentUser?.uid){
+                        userList.add(currentUser!!)
                     }
-                    userList.add(currentUser!!)
+
                 }
                 adapter.notifyDataSetChanged()
             }
