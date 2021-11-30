@@ -2,5 +2,12 @@ package com.example.chatproject
 
 class Message {
     var message: String? = null
-    var sender
+    var senderId: String? = null
+
+    constructor(){}
+
+    constructor(message: String?, senderId: String?){
+        this.message = message
+        this.senderId = senderId
+    }
 }
