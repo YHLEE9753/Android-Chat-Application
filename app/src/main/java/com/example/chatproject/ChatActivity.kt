@@ -7,8 +7,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
 class ChatActivity : AppCompatActivity() {
 
@@ -45,7 +44,26 @@ class ChatActivity : AppCompatActivity() {
         messageAdapter = MessageAdapter(this, messageList)
 
         // logic for adding data to recyclerView
+        mDbRef.child("chats").child(senderRoom!!).child("messages")
+            .addValueEventListener(object: ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
 
+                    messageList.clear()
+
+                    for(postSnapshot in snapshot.children){
+
+                        val message = postSnapshot.getValue(Message::class.java)
+                        messageList.add(message!!)
+
+                    }
+                    messageAdapter.notifyDataSetChanged()
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+
+            })
 
         // adding the message to database
         sendButton.setOnClickListener{
