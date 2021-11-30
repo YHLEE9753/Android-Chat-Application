@@ -1,5 +1,6 @@
 package com.example.chatproject
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
@@ -15,6 +16,12 @@ class ChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
+
+        val intent = Intent()
+        val name = intent.getStringExtra("name")
+        val uid = intent.getStringExtra("uid")
+
+        supportActionBar?.title = name
 
         charRecyclerView = findViewById(R.id.charRecyclerView)
         messageBox = findViewById(R.id.messageBox)
