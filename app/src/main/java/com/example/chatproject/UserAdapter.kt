@@ -22,6 +22,8 @@ class UserAdapter(val context: Context, val userList: ArrayList<User>):
         val currentUser = userList[position]
         holder.textName.text = currentUser.name
 
+        holder.itemView.se
+
     }
 
     override fun getItemCount(): Int {
