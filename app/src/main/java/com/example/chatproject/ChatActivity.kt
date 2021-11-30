@@ -5,13 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 class ChatActivity : AppCompatActivity() {
 
-    private lateinit var charRecyclerView: RecyclerView
+    private lateinit var chatRecyclerView: RecyclerView
     private lateinit var messageBox: EditText
     private lateinit var sendButton: ImageView
     private lateinit var messageAdapter: MessageAdapter
@@ -37,11 +38,14 @@ class ChatActivity : AppCompatActivity() {
 
         supportActionBar?.title = name
 
-        charRecyclerView = findViewById(R.id.charRecyclerView)
+        chatRecyclerView = findViewById(R.id.charRecyclerView)
         messageBox = findViewById(R.id.messageBox)
         sendButton = findViewById(R.id.sentButton)
         messageList = ArrayList()
         messageAdapter = MessageAdapter(this, messageList)
+
+        chatRecyclerView.layoutManager = LinearLayoutManager(this)
+        chatRecyclerView.adapter = messageAdapter
 
         // logic for adding data to recyclerView
         mDbRef.child("chats").child(senderRoom!!).child("messages")
