@@ -9,10 +9,11 @@ Chatting function using Firebase realtimedatabase <br>
 
 
 # Function
-Sign up : make your account to use application. ID format is used e-mail format
-Log in : using firebase Authentication
-Log out: log out by clicking log out button in menu
-Showing all members : showing all members in Firebase by using Rechclerview
-Chatting in the room : after click member button, you can enter the room, and you can chat in chat room
+Sign up : make your account to use application. ID format is used e-mail format<br>
+Log in : using firebase Authentication<br>
+Log out: log out by clicking log out button in menu<br>
+Showing all members : showing all members in Firebase by using Rechclerview<br>
+Chatting in the room : after click member button, you can enter the room, and you can chat in chat room<br>
+Chat in realtime : using realtime database in Firebase
 
-More Detail : ppt
+## More Detail : ppt
